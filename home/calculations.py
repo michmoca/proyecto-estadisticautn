@@ -1,0 +1,92 @@
+from scipy.stats import t
+from scipy.stats import binom
+from scipy.special import ndtri
+from scipy.stats import poisson as calcular_poisson
+import math
+
+
+def poisson(mu, k=None, inicio=None, fin=None):
+    total = 0
+    if inicio:
+        fin = fin + 1
+        for x in range(inicio,fin):
+            total+= calcular_poisson.pmf(x, mu, loc=0)
+    else:
+        total = calcular_poisson.pmf(k, mu, loc=0)
+
+    total = total * 100
+    total = format(total, '.2f')
+    return total
+
+def binomial(x,n,p):
+    porcentaje = binom.pmf(x, n, p)
+    porcentaje = porcentaje * 100
+    return format(porcentaje, '.2f')
+
+
+def binomial_rango(n,p, inicio, fin):
+    total = 0
+    fin = fin + 1
+
+    for x in range(inicio,fin):
+        total += binom.pmf(x, n, p)
+
+    total = total * 100
+    total = format(total, '.2f')
+    return total
+
+def calcular_z(confianza):
+    '''esta funcion calcula y retorna el valor de Z'''
+    alfa = 1 - (confianza / 100)
+    valor_tabla = 1 - (alfa / 2)
+    z = ndtri(valor_tabla)
+    return z
+
+def intervalo_confianza_proporcion(p, confianza, n):
+    '''esta funcion calcula y retorna un string con el intervalo
+    de acuerdo a los parametros recibidos'''
+    #se calculan los intervalos con la suma y la resta
+    z = calcular_z(confianza)
+    intervalo1 = p - z * math.sqrt(p *(1-p) /n) #izquierda - resta
+    intervalo2 = p + z * math.sqrt(p *(1-p) /n) #derecha + suma
+    #se redondean los numeros a 2 decimales
+    intervalo1 = round(intervalo1, 2)
+    intervalo2 = round(intervalo2, 2)
+    #se da formato al string antes y se retorna
+    return ("[{} - {}]".format(intervalo1, intervalo2))
+
+def t_student(N, t_score1, t_score2=None ):
+    '''metodo que calcula la probabilidad de "t" segun el N dado'''
+    N = N - 1
+    dict_resultados = {}
+
+    if t_score2 is not None:
+        print("otra funcion")
+        #evaluamos casos a < t < b
+        tabla_a = t.sf(t_score1, N)
+
+        tabla_b = t.sf(t_score2, N)
+
+        resultado = tabla_a - tabla_b
+        resultado = format(resultado, '.4f')
+
+        tabla_a = format(tabla_a, '.4f')
+        tabla_b = format(tabla_b, '.4f')
+
+        dict_resultados = {
+                        'caso1' :"P({} < T < {}) = {})".format(tabla_a, tabla_b, resultado),
+                     }
+    else:
+        tabla = t.sf(t_score1, N)
+        caso1 = 1 - tabla
+        caso1 = format(caso1, '.4f')
+        caso2 = format(tabla, '.4f')
+        caso3 = 0.5
+
+        dict_resultados = {
+                        'caso1' :"P(T<={}) = {})".format(t_score1, caso1),
+                        'caso2' :"P(T >= {}) = {})".format(t_score1, caso2),
+                        'caso3' :"P(T = 0) = {})".format(caso3),
+                     }
+
+    return dict_resultados

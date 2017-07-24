@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+
+
+{% block body %}
+<div class="container">
+
+  <h1>Estimación </h1>
+  <h2>Intervalos de Confianza para la Media y Proporciones</h2>
+  <div class="row">
+
+    <div class="col-xs-6 col-md-4">
+      <form  method="post">
+        {% csrf_token %}
+        {{form.as_p}}
+        <button class="btn btn-primary"type="submit" >Calcular</button>
+      </form>
+      {% if resultado %}
+      <h2 >El intervalo de confianza es: <span class="text-primary">{{ resultado }}</span> </h2>
+      <span class="bg-primary"></span>
+      {% endif %}
+    </div>
+
+    <div class="col-xs-12 col-md-8">
+      <iframe allowfullscreen="" height="390" src="https://www.youtube.com/embed/5ABpqVSx33I?ecver=2"width="640"></iframe>
+    </div>
+
+    <!-- end row -->
+  </div>
+
+
+  <!-- end container -->
+</div>
+
+{% endblock %}
