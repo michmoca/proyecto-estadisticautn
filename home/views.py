@@ -20,7 +20,7 @@ class ContactoView(TemplateView):
             from_email = form.cleaned_data['from_email']
             if subject and message and from_email:
                 try:
-                    send_mail(subject, message, from_email, ['mich.montes@gmail.com'])
+                    send_mail(subject, message, from_email, ['lujosmich@gmail.com'])
                 except BadHeaderError:
                     text = 'Invalid header found.'
                 text = 'Correo enviado con éxito'
