@@ -19,29 +19,31 @@ class ContactoView(TemplateView):
             subject = form.cleaned_data['subject']
             message = form.cleaned_data['message']
             from_email = form.cleaned_data['from_email']
-            # if subject and message and from_email:
-            #     try:
-            #         send_mail(subject, message, from_email, ['lujosmich@gmail.com'], fail_silently=False)
-            #     except BadHeaderError:
-            #         text = 'Invalid header found.'
-            #     text = 'Correo enviado con éxito'
-            # else:
-            #     # In reality we'd use a form class
-            #     # to get proper validation errors.
-            #     text = 'Make sure all fields are entered and valid.'
-
-            subject, from_email, to = subject, from_email, 'lujosmich@gmail.com'
-            text_content = 'This is an important message.'
-            html_content = '<p>This is an <strong>important</strong> message.</p>' + from_email
-            msg = EmailMultiAlternatives(subject, text_content, from_email, [to])
-            msg.attach_alternative(html_content, "text/html")
-            try:
-                msg.send()
-            except Exception as e:
-                text = 'Ocurrió un error: '
-            else:
+            #
+            message = message + " correo " + from_email
+            if subject and message and from_email:
+                try:
+                    send_mail(subject, message, from_email, ['lujosmich@gmail.com'], fail_silently=False)
+                except BadHeaderError:
+                    text = 'Invalid header found.'
                 text = 'Correo enviado con éxito'
-            form = Form.Contacto()
+            else:
+                # In reality we'd use a form class
+                # to get proper validation errors.
+                text = 'Make sure all fields are entered and valid.'
+
+            # subject, from_email, to = subject, from_email, 'lujosmich@gmail.com'
+            # text_content = 'This is an important message.'
+            # html_content = '<p>This is an <strong>important</strong> message.</p>' + from_email
+            # msg = EmailMultiAlternatives(subject, text_content, from_email, [to])
+            # msg.attach_alternative(html_content, "text/html")
+            # try:
+            #     msg.send()
+            # except Exception as e:
+            #     text = 'Ocurrió un error: '
+            # else:
+            #     text = 'Correo enviado con éxito'
+            # form = Form.Contacto()
 
 
         args = {'form': form, 'text': text}
