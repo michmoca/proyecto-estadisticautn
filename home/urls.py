@@ -10,4 +10,5 @@ urlpatterns = [
     url(r'^poisson/$', views.PoissonView.as_view(), name='poisson'),
     url(r'^poisson-rango/$', views.Poisson_RangoView.as_view(), name='poisson_rango'),
     url(r'^descriptiva-info/$', views.Descriptiva_InfoView.as_view(), name='descriptiva-info'),
+    url(r'^contacto/$', views.ContactoView.as_view(), name='contacto'),
 ]

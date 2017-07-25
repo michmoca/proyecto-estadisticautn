@@ -1,8 +1,35 @@
 from django import forms
+from django.core.exceptions import ValidationError
+from django.utils.translation import ugettext_lazy as _
+
+def validate_even(value):
+    if value % 2 != 0:
+        raise ValidationError(
+            _('%(value)s is not an even number'),
+            params={'value': value},
+        )
 
 class HomeForm(forms.Form):
-    post = forms.CharField()
+    #post = forms.CharField()
+    post = even_field = forms.IntegerField(validators=[validate_even])
 
+class Contacto(forms.Form):
+    subject = forms.CharField(label='subject',
+                            #help_text='Grados de libertad',
+                                widget=forms.TextInput(
+                                    attrs={'class': 'form-control',
+                                    'placeholder': 'subject '}),
+                            )
+    message = forms.CharField(label='message',
+                                    widget=forms.Textarea(
+                                        attrs={'class': 'form-control',
+                                        'placeholder': 'message'}),
+                                )
+    from_email = forms.CharField(label='from_email',
+                                widget=forms.TextInput(
+                                    attrs={'class': 'form-control',
+                                    'placeholder': 'email'}),
+                                )
 
 class Descriptiva_Info(forms.Form):
     lista_num = forms.CharField(label='Ingrese la lista de números separados por comas',

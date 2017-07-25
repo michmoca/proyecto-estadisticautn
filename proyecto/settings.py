@@ -136,6 +136,13 @@ STATICFILES_DIRS = [
 STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 
-EMAIL_HOST = 'localhost'
-EMAIL_PORT = 1025
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+# TUTORIAL
+# EMAIL_HOST = 'localhost'
+# EMAIL_PORT = 1025
+# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'lujosmich@gmail.com'
+EMAIL_HOST_PASSWORD = 'Lujo123IS'
+EMAIL_PORT = 587
