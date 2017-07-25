@@ -15,7 +15,11 @@
         <button class="btn btn-primary"type="submit" >Calcular</button>
       </form>
       {% if resultado %}
-      <h2 >El porcentaje es de: <span class="text-primary">{{ resultado }}%</span> </h2>
+      <p >Mediana: <span class="text-primary">{{ resultado.mediana }}</span> <br>
+      Media: <span class="text-primary">{{ resultado.media }}</span> <br>
+      Moda: <span class="text-primary">{{ resultado.moda }}</span> <br>
+      Varianza: <span class="text-primary">{{ resultado.varianza }}</span> <br>
+      Desviación Estandar: <span class="text-primary">{{ resultado.std }}</span> </p>
       <span class="bg-primary"></span>
       {% endif %}
     </div>

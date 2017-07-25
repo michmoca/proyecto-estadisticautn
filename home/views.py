@@ -20,6 +20,23 @@ class HomeView(TemplateView):
         args = {'form': form, 'text': text}
         return render(request, self.template_name, args)
 
+class Descriptiva_InfoView(TemplateView):
+    template_name = 'home/descriptiva_info.html'
+
+    def get(self, request):
+        form = Form.Descriptiva_Info()
+        return render(request, self.template_name, {'form': form})
+
+    def post(self, request):
+        form = Form.Descriptiva_Info(request.POST)
+        if form.is_valid():
+            lista_num = form.cleaned_data['lista_num']
+            resultado = calcu.descriptiva_info(lista=lista_num)
+            form = Form.Descriptiva_Info()
+
+        args = {'form': form, 'resultado': resultado}
+        return render(request, self.template_name, args)
+
 class PoissonView(TemplateView):
     template_name = 'home/poisson.html'
 

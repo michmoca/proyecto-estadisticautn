@@ -4,11 +4,12 @@ class HomeForm(forms.Form):
     post = forms.CharField()
 
 
-class descriptiva_info(forms.Form):
-    lista_num = forms.IntegerField(label='Ingrese la lista de números separados por comas',
-                                widget=forms.TextInput(
+class Descriptiva_Info(forms.Form):
+    lista_num = forms.CharField(label='Ingrese la lista de números separados por comas',
+                                widget=forms.Textarea(
                                     attrs={'class': 'form-control',
-                                    'placeholder': 'Ejemplo: 10, 54, 36, 12.5, 8'})
+                                    'placeholder': 'Ejemplo: 10, 54, 36, 12.5, 8'}),
+
                             )
 
 class TStudent(forms.Form):

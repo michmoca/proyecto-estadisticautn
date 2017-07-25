@@ -2,8 +2,27 @@ from scipy.stats import t
 from scipy.stats import binom
 from scipy.special import ndtri
 from scipy.stats import poisson as calcular_poisson
+from scipy.stats import mode
 import math
+import numpy as np
 
+def descriptiva_info(lista):
+    lista= lista.split(',')
+    lista_np = np.array(lista)
+    lista_np = lista_np.astype(float)
+    mediana = np.median(lista_np)
+    media = np.mean(lista_np)
+    moda = mode(lista_np)
+    varianza = np.var(lista_np)
+    desv = np.std(lista_np)
+    dict_resultados = {
+                    'mediana': mediana,
+                    'media': media,
+                    'moda': moda.mode[0],
+                    'varianza': varianza,
+                    'std': desv,
+                 }
+    return dict_resultados
 
 def poisson(mu, k=None, inicio=None, fin=None):
     total = 0
