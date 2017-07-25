@@ -38,7 +38,7 @@ class ContactoView(TemplateView):
             try:
                 msg.send()
             except Exception as e:
-                text = 'Ocurrió un error'
+                text = 'Ocurrió un error: ' + e
             else:
                 text = 'Correo enviado con éxito'
             form = Form.Contacto()

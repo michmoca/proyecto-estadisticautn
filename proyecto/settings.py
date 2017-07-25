@@ -26,6 +26,11 @@ SECRET_KEY = '&uasbq0fxrn3e7*i=ee%!i03fzu&hoo)0*^654jaw!#9t)45+z'
 DEBUG = True
 
 ALLOWED_HOSTS = ['*']
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'lujosmich@gmail.com'
+EMAIL_HOST_PASSWORD = 'Lujo123IS'
+EMAIL_PORT = 587
 
 
 # Application definition
@@ -140,9 +145,3 @@ STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 # EMAIL_HOST = 'localhost'
 # EMAIL_PORT = 1025
 # EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-
-EMAIL_USE_TLS = True
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'lujosmich@gmail.com'
-EMAIL_HOST_PASSWORD = 'Lujo123IS'
-EMAIL_PORT = 587
