@@ -25,7 +25,7 @@ class Contacto(forms.Form):
                                         attrs={'class': 'form-control',
                                         'placeholder': 'Mensaje'}),
                                 )
-    from_email = forms.EmailField(label='Tu correo',
+    from_email = forms.CharField(label='Tu correo',
                                 widget=forms.EmailInput(
                                     attrs={'class': 'form-control',
                                     'placeholder': 'correo'}),
@@ -42,17 +42,18 @@ class Descriptiva_Info(forms.Form):
 class TStudent(forms.Form):
     n = forms.IntegerField(label='N',
                             #help_text='Grados de libertad',
-                                widget=forms.TextInput(
+                                widget=forms.NumberInput(
                                     attrs={'class': 'form-control',
                                     'placeholder': 'Grados de Libertad'}),
                             )
     t_score1 = forms.FloatField(label='T-Score 1',
-                                    widget=forms.TextInput(
+                                    widget=forms.NumberInput(
                                         attrs={'class': 'form-control',
                                         'placeholder': 'T-Score 1'}),
                                 )
     t_score2 = forms.FloatField(label='T-Score 2', required=False,
-                                widget=forms.TextInput(
+                                help_text='Campo Opcional',
+                                widget=forms.NumberInput(
                                     attrs={'class': 'form-control',
                                     'placeholder': 'T-Score 2'}),
                                 )
@@ -60,63 +61,63 @@ class TStudent(forms.Form):
 
 class Estimacion(forms.Form):
     n = forms.IntegerField(label='N',
-                                widget=forms.TextInput(
+                                widget=forms.NumberInput(
                                     attrs={'class': 'form-control',
                                     'placeholder': 'Ingrese numero, ejemplo 300'})
                             )
     p = forms.FloatField(label='P',
-                        widget=forms.TextInput(
+                        widget=forms.NumberInput(
                             attrs={'class': 'form-control',
                             'placeholder': 'Ingrese probabilidad, ejemplo 0.20'})
                         )
     confianza = forms.FloatField(label='Confianza',
-                        widget=forms.TextInput(
+                        widget=forms.NumberInput(
                             attrs={'class': 'form-control',
                             'placeholder': 'Ingrese % confianza, ejemplo 95'})
                         )
 
 class Binomial(forms.Form):
     x = forms.IntegerField(label='x: Ingrese número de éxitos observados',
-                                widget=forms.TextInput(
+                                widget=forms.NumberInput(
                                     attrs={'class': 'form-control',
                                     'placeholder': 'Ejemplo 13'})
                             )
     n = forms.IntegerField(label='n: Ingrese número de ensayos',
-                        widget=forms.TextInput(
+                        widget=forms.NumberInput(
                             attrs={'class': 'form-control',
                             'placeholder': 'Ejemplo 15'})
                         )
     p = forms.FloatField(label='p: Probabilidad de éxito en cada ensayo',
-                        widget=forms.TextInput(
+                        widget=forms.NumberInput(
                             attrs={'class': 'form-control',
                             'placeholder': 'Ejemplo 0.72'})
                         )
 
 class Binomial_Rango(forms.Form):
     n = forms.IntegerField(label='n: Ingrese número de ensayos',
-                        widget=forms.TextInput(
+                        widget=forms.NumberInput(
                             attrs={'class': 'form-control',
                             'placeholder': 'Ejemplo 4'})
                         )
     p = forms.FloatField(label='p: Probabilidad de éxito.',
-                        widget=forms.TextInput(
+                        widget=forms.NumberInput(
                             attrs={'class': 'form-control',
                             'placeholder': 'Ejemplo 0.9'})
                         )
     inicio = forms.IntegerField(label='Ingrese el número inicial del rango',
-                                widget=forms.TextInput(
+                                widget=forms.NumberInput(
                                     attrs={'class': 'form-control',
                                     'placeholder': 'Ejemplo 1'})
                             )
     fin = forms.IntegerField(label='Ingrese el número final del rango',
-                        widget=forms.TextInput(
+                        widget=forms.NumberInput(
                             attrs={'class': 'form-control',
                             'placeholder': 'Ejemplo 3'})
                         )
 
 class Poisson(forms.Form):
     k = forms.IntegerField(label='k: Ingrese número de fracasos',
-                                widget=forms.TextInput(
+                                widget=forms.NumberInput(
                                     attrs={'class': 'form-control',
                                     'placeholder': 'Ejemplo 4'})
                             )
@@ -127,13 +128,13 @@ class Poisson(forms.Form):
     #                     )
 
     n = forms.IntegerField(label='Ingrese el número de ensayos',
-                        widget=forms.TextInput(
+                        widget=forms.NumberInput(
                             attrs={'class': 'form-control',
                             'placeholder': 'Ejemplo 100'})
                         )
 
     p = forms.FloatField(label='Ingrese la probabilidad',
-                        widget=forms.TextInput(
+                        widget=forms.NumberInput(
                             attrs={'class': 'form-control',
                             'placeholder': 'Ejemplo 0.03'})
                         )
@@ -147,24 +148,24 @@ class Poisson_Rango(forms.Form):
     #                     )
 
     n = forms.IntegerField(label='Ingrese el número de ensayos',
-                        widget=forms.TextInput(
+                        widget=forms.NumberInput(
                             attrs={'class': 'form-control',
                             'placeholder': 'Ejemplo 100'})
                         )
 
     p = forms.FloatField(label='Ingrese la probabilidad',
-                        widget=forms.TextInput(
+                        widget=forms.NumberInput(
                             attrs={'class': 'form-control',
                             'placeholder': 'Ejemplo 0.03'})
                         )
 
     inicio = forms.IntegerField(label='Ingrese el número inicial del rango',
-                                widget=forms.TextInput(
+                                widget=forms.NumberInput(
                                     attrs={'class': 'form-control',
                                     'placeholder': 'Ejemplo 1'})
                             )
     fin = forms.IntegerField(label='Ingrese el número final del rango',
-                        widget=forms.TextInput(
+                        widget=forms.NumberInput(
                             attrs={'class': 'form-control',
                             'placeholder': 'Ejemplo 3'})
                         )
