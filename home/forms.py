@@ -26,7 +26,7 @@ class Contacto(forms.Form):
                                         'placeholder': 'Mensaje'}),
                                 )
     from_email = forms.CharField(label='Tu correo',
-                                widget=forms.TextInput(
+                                widget=forms.EmailInput(
                                     attrs={'class': 'form-control',
                                     'placeholder': 'correo'}),
                                 )
