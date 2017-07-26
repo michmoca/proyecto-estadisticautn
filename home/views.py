@@ -19,11 +19,11 @@ class ContactoView(TemplateView):
             subject = form.cleaned_data['subject']
             message = form.cleaned_data['message']
             from_email = form.cleaned_data['from_email']
-            #
-            message = message + " correo " + from_email
+            #OPCION 1
+            message = message + ". El correo es de: " + from_email
             if subject and message and from_email:
                 try:
-                    send_mail(subject, message, from_email, ['lujosmich@gmail.com'], fail_silently=False)
+                    send_mail(subject, message, from_email, ['mich.montes@gmail.com'], fail_silently=False)
                 except BadHeaderError:
                     text = 'Invalid header found.'
                 text = 'Correo enviado con éxito'
@@ -43,7 +43,7 @@ class ContactoView(TemplateView):
             #     text = 'Ocurrió un error: '
             # else:
             #     text = 'Correo enviado con éxito'
-            # form = Form.Contacto()
+            form = Form.Contacto()
 
 
         args = {'form': form, 'text': text}

@@ -14,21 +14,21 @@ class HomeForm(forms.Form):
     post = even_field = forms.IntegerField(validators=[validate_even])
 
 class Contacto(forms.Form):
-    subject = forms.CharField(label='subject',
+    subject = forms.CharField(label='Asunto',
                             #help_text='Grados de libertad',
                                 widget=forms.TextInput(
                                     attrs={'class': 'form-control',
-                                    'placeholder': 'subject '}),
+                                    'placeholder': 'Asunto '}),
                             )
-    message = forms.CharField(label='message',
+    message = forms.CharField(label='Mensaje',
                                     widget=forms.Textarea(
                                         attrs={'class': 'form-control',
-                                        'placeholder': 'message'}),
+                                        'placeholder': 'Mensaje'}),
                                 )
-    from_email = forms.CharField(label='from_email',
+    from_email = forms.CharField(label='Tu correo',
                                 widget=forms.TextInput(
                                     attrs={'class': 'form-control',
-                                    'placeholder': 'email'}),
+                                    'placeholder': 'correo'}),
                                 )
 
 class Descriptiva_Info(forms.Form):

@@ -12,42 +12,46 @@
 
   <body>
     <br>
-    <div class="container">
+    <div class="container-fluid">
 
-      <!-- Static navbar -->
-      <nav class="navbar navbar-default">
-        <div class="container-fluid">
-          <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="/">Proyecto Estadistica</a>
-          </div>
-          <div id="navbar" class="navbar-collapse collapse">
-            <ul class="nav navbar-nav">
-              <li><a href="/home/tstudent/">T Student</a></li>
-              <li><a href="/home/estimacion/">Estimación</a></li>
-              <li><a href="/home/binomial/">Binomial</a></li>
-              <li><a href="/home/binomial-rango/">Binomial-Rango</a></li>
-              <li><a href="/home/poisson/">Poisson</a></li>
-              <li><a href="/home/poisson-rango/">Poisson-Rango</a></li>
-              <li><a href="/home/descriptiva-info/">Descriptiva-info</a></li>
-              <li><a href="/home/contacto/">Contacto</a></li>
-            </ul>
+      <div class="container">
+        <!-- Static navbar -->
+        <nav class="navbar navbar-default">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="/">Proyecto Estadistica</a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+              <ul class="nav navbar-nav">
+                <li><a href="/home/tstudent/">T Student</a></li>
+                <li><a href="/home/estimacion/">Estimación</a></li>
+                <li><a href="/home/binomial/">Binomial</a></li>
+                <li><a href="/home/binomial-rango/">Binomial-Rango</a></li>
+                <li><a href="/home/poisson/">Poisson</a></li>
+                <li><a href="/home/poisson-rango/">Poisson-Rango</a></li>
+                <li><a href="/home/descriptiva-info/">Descriptiva-info</a></li>
+                <li><a href="/home/contacto/">Contacto</a></li>
+              </ul>
 
-          </div><!--/.nav-collapse -->
-        </div><!--/.container-fluid -->
-      </nav>
+            </div><!--/.nav-collapse -->
+          </div><!--/.container-fluid -->
+        </nav>
+      </div><!-- Container -->
 
+    </div> <!-- /container fluid -->
 
-    </div> <!-- /container -->
+    <div class="container-fluid">
+      {% block body %}
+      <h1>Base</h1>
+      {% endblock %}
+    </div>
 
-    {% block body %}
-    <h1>Base</h1>
-    {% endblock %}
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <!-- Latest compiled and minified JavaScript -->
