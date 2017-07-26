@@ -3,8 +3,29 @@ from django.shortcuts import render
 from home import forms as Form
 from home import calculations as calcu
 from django.core.mail import send_mail, BadHeaderError
-from django.http import HttpResponse, HttpResponseRedirect
-from django.core.mail import EmailMultiAlternatives
+#from django.http import HttpResponse, HttpResponseRedirect
+#from django.core.mail import EmailMultiAlternatives
+from django.http import JsonResponse
+from django.views.generic import View
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from django.contrib.auth import get_user_model
+
+User = get_user_model()
+
+class CharData(APIView):
+    authentication_classes = []
+    permission_classes = []
+
+    def get(self, request, format=None):
+        qs_count = User.objects.all().count()
+        labels = ["Users", "Blue", "Yellow", "Green", "Purple", "Orange"]
+        default_items = [qs_count, 23, 15, 32, 12, 2 ]
+        data = {
+            "labels": labels,
+            "default": default_items,
+        }
+        return Response(data)
 
 class ContactoView(TemplateView):
     template_name = 'home/contacto.html'
@@ -51,19 +72,34 @@ class ContactoView(TemplateView):
 
 class HomeView(TemplateView):
     template_name = 'home/home.html'
+    def get(self, request, *args, **kwargs):
+        return render(request, self.template_name, {"customers":10})
 
-    def get(self, request):
-        form = Form.HomeForm()
-        return render(request, self.template_name, {'form': form})
+# class HomeView(View):
+#     def get(self, request, *args, **kwargs):
+#         return render(request, 'home/home.html', {})
 
-    def post(self, request):
-        form = Form.HomeForm(request.POST)
-        if form.is_valid():
-            text = form.cleaned_data['post']
-            form = Form.HomeForm()
+def get_data(request, *args, **kwargs):
+    data = {
+        "sales": 100,
+        "customers": 10,
+    }
+    return JsonResponse(data)
 
-        args = {'form': form, 'text': text}
-        return render(request, self.template_name, args)
+
+
+    # def get(self, request):
+    #     form = Form.HomeForm()
+    #     return render(request, self.template_name, {'form': form})
+    #
+    # def post(self, request):
+    #     form = Form.HomeForm(request.POST)
+    #     if form.is_valid():
+    #         text = form.cleaned_data['post']
+    #         form = Form.HomeForm()
+    #
+    #     args = {'form': form, 'text': text}
+    #     return render(request, self.template_name, args)
 
 class Descriptiva_InfoView(TemplateView):
     template_name = 'home/descriptiva_info.html'

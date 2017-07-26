@@ -3,6 +3,8 @@ from home import views
 
 urlpatterns = [
     url(r'^$', views.HomeView.as_view(), name='home'),
+    url(r'^api/data/$', views.get_data, name='api-data'),
+    url(r'^api/chart/data/$', views.CharData.as_view()),
     url(r'^tstudent/$', views.TStudentView.as_view(), name='tstudent'),
     url(r'^estimacion/$', views.EstimacionView.as_view(), name='estimacion'),
     url(r'^binomial/$', views.BinomialView.as_view(), name='binomial'),

@@ -1,17 +1,8 @@
 from django import forms
-from django.core.exceptions import ValidationError
-from django.utils.translation import ugettext_lazy as _
 
-def validate_even(value):
-    if value % 2 != 0:
-        raise ValidationError(
-            _('%(value)s is not an even number'),
-            params={'value': value},
-        )
 
 class HomeForm(forms.Form):
-    #post = forms.CharField()
-    post = even_field = forms.IntegerField(validators=[validate_even])
+    pass
 
 class Contacto(forms.Form):
     subject = forms.CharField(label='Asunto',

@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 
     {% block head %}
-    <title>Base</title>
+    <title>Proyecto Estadística UTN</title>
     {% endblock %}
   </head>
 
@@ -39,7 +39,7 @@
                 <li><a href="/home/binomial-rango/">Binomial-Rango</a></li>
                 <li><a href="/home/poisson/">Poisson</a></li>
                 <li><a href="/home/poisson-rango/">Poisson-Rango</a></li>
-                <li><a href="/home/descriptiva-info/">Descriptiva-info</a></li>
+                <li><a href="/home/descriptiva-info/">Estadística Descriptiva</a></li>
                 <li><a href="/home/contacto/">Contacto</a></li>
               </ul>
 
@@ -60,6 +60,14 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
 
+
+    <script>
+      $(document).ready(function(){
+        {% block jquery %}
+        {% endblock %}
+      })
+    </script>
   </body>
 </html>
