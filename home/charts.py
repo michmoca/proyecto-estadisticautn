@@ -5,6 +5,10 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 import numpy as np
 from home.views import Descriptiva_InfoView
+import tkinter as tk # Python 3
+import matplotlib
+matplotlib.use('Agg')
+
 sns.set(color_codes=True)
 sns.set_style("whitegrid")
 
