@@ -18,10 +18,4 @@ six==1.10.0
 statsmodels==0.8.0
 tornado==4.5.1
 whitenoise==3.3.0
-tk8.5
-tk8.5-dev
-tcl8.5
-tcl8.5-dev
-tk
-tk-dev
-tkinter-pypy
+tkinter==8.5
