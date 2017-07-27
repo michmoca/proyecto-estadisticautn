@@ -19,10 +19,10 @@ statsmodels==0.8.0
 tornado==4.5.1
 whitenoise==3.3.0
 python3-tk
-tk8.6
-tk8.6-dev
-tcl8.6
-tcl8.6-dev
+tk8.5
+tk8.5-dev
+tcl8.5
+tcl8.5-dev
 tk
 tk-dev
 tkinter-pypy
