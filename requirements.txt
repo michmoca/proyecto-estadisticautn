@@ -18,4 +18,3 @@ six==1.10.0
 statsmodels==0.8.0
 tornado==4.5.1
 whitenoise==3.3.0
-tkinter==8.6.6
