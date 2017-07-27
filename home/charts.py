@@ -5,7 +5,7 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 import numpy as np
 from home.views import Descriptiva_InfoView
-import tkinter as tk # Python 3
+import tkinter as tk
 import matplotlib
 matplotlib.use('Agg')
 
