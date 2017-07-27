@@ -11,6 +11,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 #from django.contrib.auth import get_user_model
 
+
 #User = get_user_model()
 
 class CharData(APIView):
@@ -101,8 +102,11 @@ def get_data(request, *args, **kwargs):
     #     args = {'form': form, 'text': text}
     #     return render(request, self.template_name, args)
 
+
 class Descriptiva_InfoView(TemplateView):
     template_name = 'home/descriptiva_info.html'
+    def __init__(self):
+        self.lista_num = "0"
 
     def get(self, request):
         form = Form.Descriptiva_Info()
@@ -112,10 +116,13 @@ class Descriptiva_InfoView(TemplateView):
         form = Form.Descriptiva_Info(request.POST)
         if form.is_valid():
             lista_num = form.cleaned_data['lista_num']
+            Descriptiva_InfoView.lista_num = lista_num
             resultado = calcu.descriptiva_info(lista=lista_num)
+
             form = Form.Descriptiva_Info()
 
         args = {'form': form, 'resultado': resultado}
+        print(lista_num)
         return render(request, self.template_name, args)
 
 class PoissonView(TemplateView):
