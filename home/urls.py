@@ -5,8 +5,8 @@ from home import charts
 
 
 urlpatterns = [
-    url(r'^charts/boxplot.jpg$', charts.boxplot),
-    url(r'^charts/histograma.png$', charts.histograma),
+    #url(r'^charts/boxplot.jpg$', charts.boxplot),
+    #url(r'^charts/histograma.png$', charts.histograma),
     #url(r'^charts/simple.png$', charts.simple),
     url(r'^$', views.HomeView.as_view(), name='home'),
     url(r'^api/data/$', views.get_data, name='api-data'),
