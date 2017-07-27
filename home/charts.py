@@ -9,6 +9,8 @@ from matplotlib.figure import Figure
 import numpy as np
 from home.views import Descriptiva_InfoView
 import tkinter as tk
+matplotlib.use('Agg')
+import matplotlib.pyplot as plt
 
 
 sns.set(color_codes=True)
