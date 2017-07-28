@@ -11,7 +11,6 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 #from django.contrib.auth import get_user_model
 
-
 #User = get_user_model()
 
 class CharData(APIView):
@@ -114,16 +113,23 @@ class Descriptiva_InfoView(TemplateView):
 
     def post(self, request):
         form = Form.Descriptiva_Info(request.POST)
+
         if form.is_valid():
             lista_num = form.cleaned_data['lista_num']
             Descriptiva_InfoView.lista_num = lista_num
             resultado = calcu.descriptiva_info(lista=lista_num)
-
             form = Form.Descriptiva_Info()
 
-        args = {'form': form, 'resultado': resultado}
-        print(lista_num)
-        return render(request, self.template_name, args)
+            args = {'form': form, 'resultado': resultado}
+            print(lista_num)
+            return render(request, self.template_name, args)
+
+        else:
+            print("formulario no valido")
+            args = {'form': form}
+            return render(request, self.template_name, args)
+
+
 
 class PoissonView(TemplateView):
     template_name = 'home/poisson.html'

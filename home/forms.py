@@ -1,8 +1,6 @@
 from django import forms
 from django.core import validators
-from django.core.validators import RegexValidator
 
-my_validator = RegexValidator(r"^[0-9]{1,2}([,.][0-9]{1,2})?$", "Solo números separados por coma.")
 
 class HomeForm(forms.Form):
     pass
@@ -26,7 +24,7 @@ class Contacto(forms.Form):
                                 )
 
 class Descriptiva_Info(forms.Form):
-    lista_num = forms.CharField(
+    lista_num = forms.CharField(validators=[validators.int_list_validator(sep=',', message='Hay un error en la lista de números'),],
                                 label='Ingrese la lista de números separados por comas',
                                 widget=forms.Textarea(
                                     attrs={'class': 'form-control',
