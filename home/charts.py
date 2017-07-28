@@ -7,7 +7,7 @@ from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas
 from matplotlib.figure import Figure
 import numpy as np
 from home.views import Descriptiva_InfoView
-import tkinter as tk
+
 
 
 
