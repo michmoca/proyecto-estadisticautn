@@ -1,7 +1,10 @@
 from django.conf.urls import url
 from home import views
+from home import charts
 
 urlpatterns = [
+    url(r'^charts/boxplot.jpg$', charts.boxplot),
+    url(r'^charts/histograma.png$', charts.histograma),
     url(r'^$', views.HomeView.as_view(), name='home'),
     url(r'^api/data/$', views.get_data, name='api-data'),
     url(r'^api/chart/data/$', views.CharData.as_view()),
