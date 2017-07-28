@@ -42,7 +42,7 @@ def boxplot(request):
     ax.boxplot(lista_np)
 
     canvas=FigureCanvas(fig)
-    response=django.http.HttpResponse(content_type='image/jpg')
+    response=django.http.HttpResponse(content_type='image/png')
     canvas.print_png(response)
     return response
 
