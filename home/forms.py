@@ -37,7 +37,7 @@ class Descriptiva_Info(forms.Form):
 
 
 class TStudent(forms.Form):
-    n = forms.IntegerField(min_value=1,
+    n = forms.IntegerField(min_value=1, max_value=30,
                                 label='N: Grados de libertad',
                                 widget=forms.NumberInput(
                                     attrs={'class': 'form-control',
@@ -50,7 +50,7 @@ class TStudent(forms.Form):
                                         'placeholder': 'Ejemplo: 2.861'}),
                                 )
     t_score2 = forms.FloatField(label='T-Score 2', required=False,
-                                help_text='Ver video minuto 2 para ejemplo.',
+                                #help_text='Ver video minuto 2 para ejemplo.',
                                 widget=forms.NumberInput(
                                     attrs={'class': 'form-control',
                                     'placeholder': 'Opcional  '}),
@@ -63,12 +63,12 @@ class Estimacion(forms.Form):
                                     attrs={'class': 'form-control',
                                     'placeholder': 'Ingrese numero, ejemplo 300'})
                             )
-    p = forms.FloatField(min_value=0, label='P',
+    p = forms.FloatField(min_value=0, max_value=1, label='P',
                         widget=forms.NumberInput(
                             attrs={'class': 'form-control',
                             'placeholder': 'Ingrese probabilidad, ejemplo 0.20'})
                         )
-    confianza = forms.FloatField(min_value=0, label='Confianza',
+    confianza = forms.FloatField(min_value=0, max_value=100, label='Confianza',
                         widget=forms.NumberInput(
                             attrs={'class': 'form-control',
                             'placeholder': 'Ingrese % confianza, ejemplo 95'})
@@ -85,7 +85,7 @@ class Binomial(forms.Form):
                             attrs={'class': 'form-control',
                             'placeholder': 'Ejemplo 15'})
                         )
-    p = forms.FloatField(min_value=0, label='p: Probabilidad de éxito en cada ensayo',
+    p = forms.FloatField(min_value=0, max_value=1, label='p: Probabilidad de éxito en cada ensayo',
                         widget=forms.NumberInput(
                             attrs={'class': 'form-control',
                             'placeholder': 'Ejemplo 0.72'})
@@ -97,7 +97,7 @@ class Binomial_Rango(forms.Form):
                             attrs={'class': 'form-control',
                             'placeholder': 'Ejemplo 4'})
                         )
-    p = forms.FloatField(min_value=0, label='p: Probabilidad de éxito.',
+    p = forms.FloatField(min_value=0, max_value=1, label='p: Probabilidad de éxito.',
                         widget=forms.NumberInput(
                             attrs={'class': 'form-control',
                             'placeholder': 'Ejemplo 0.9'})
@@ -131,7 +131,7 @@ class Poisson(forms.Form):
                             'placeholder': 'Ejemplo 100'})
                         )
 
-    p = forms.FloatField(min_value=0, label='Ingrese la probabilidad',
+    p = forms.FloatField(min_value=0, max_value=1, label='Ingrese la probabilidad',
                         widget=forms.NumberInput(
                             attrs={'class': 'form-control',
                             'placeholder': 'Ejemplo 0.03'})
@@ -151,7 +151,7 @@ class Poisson_Rango(forms.Form):
                             'placeholder': 'Ejemplo 100'})
                         )
 
-    p = forms.FloatField(min_value=0, label='Ingrese la probabilidad',
+    p = forms.FloatField(min_value=0, max_value=1, label='Ingrese la probabilidad',
                         widget=forms.NumberInput(
                             attrs={'class': 'form-control',
                             'placeholder': 'Ejemplo 0.03'})
