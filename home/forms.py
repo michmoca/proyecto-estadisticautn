@@ -1,5 +1,8 @@
 from django import forms
+from django.core import validators
+from django.core.validators import RegexValidator
 
+my_validator = RegexValidator(r"^[0-9]{1,2}([,.][0-9]{1,2})?$", "Solo números separados por coma.")
 
 class HomeForm(forms.Form):
     pass
@@ -23,19 +26,23 @@ class Contacto(forms.Form):
                                 )
 
 class Descriptiva_Info(forms.Form):
-    lista_num = forms.CharField(label='Ingrese la lista de números separados por comas',
+    lista_num = forms.CharField(validators=[my_validator],
+                                label='Ingrese la lista de números separados por comas',
                                 widget=forms.Textarea(
                                     attrs={'class': 'form-control',
                                     'placeholder': 'Ejemplo: 10, 54, 36, 12.5, 8'}),
 
                             )
 
+
+
 class TStudent(forms.Form):
-    n = forms.IntegerField(label='N: Grados de libertad',
-                            #help_text='Grados de libertad',
+    n = forms.IntegerField(min_value=1,
+                                label='N: Grados de libertad',
                                 widget=forms.NumberInput(
                                     attrs={'class': 'form-control',
                                     'placeholder': 'Ejemplo: 20'}),
+
                             )
     t_score1 = forms.FloatField(label='T-Score 1',
                                     widget=forms.NumberInput(
@@ -51,63 +58,63 @@ class TStudent(forms.Form):
 
 
 class Estimacion(forms.Form):
-    n = forms.IntegerField(label='N',
+    n = forms.IntegerField(min_value=1, label='N',
                                 widget=forms.NumberInput(
                                     attrs={'class': 'form-control',
                                     'placeholder': 'Ingrese numero, ejemplo 300'})
                             )
-    p = forms.FloatField(label='P',
+    p = forms.FloatField(min_value=0, label='P',
                         widget=forms.NumberInput(
                             attrs={'class': 'form-control',
                             'placeholder': 'Ingrese probabilidad, ejemplo 0.20'})
                         )
-    confianza = forms.FloatField(label='Confianza',
+    confianza = forms.FloatField(min_value=0, label='Confianza',
                         widget=forms.NumberInput(
                             attrs={'class': 'form-control',
                             'placeholder': 'Ingrese % confianza, ejemplo 95'})
                         )
 
 class Binomial(forms.Form):
-    x = forms.IntegerField(label='x: Ingrese número de éxitos observados',
+    x = forms.IntegerField(min_value=1, label='x: Ingrese número de éxitos observados',
                                 widget=forms.NumberInput(
                                     attrs={'class': 'form-control',
                                     'placeholder': 'Ejemplo 13'})
                             )
-    n = forms.IntegerField(label='n: Ingrese número de ensayos',
+    n = forms.IntegerField(min_value=1, label='n: Ingrese número de ensayos',
                         widget=forms.NumberInput(
                             attrs={'class': 'form-control',
                             'placeholder': 'Ejemplo 15'})
                         )
-    p = forms.FloatField(label='p: Probabilidad de éxito en cada ensayo',
+    p = forms.FloatField(min_value=0, label='p: Probabilidad de éxito en cada ensayo',
                         widget=forms.NumberInput(
                             attrs={'class': 'form-control',
                             'placeholder': 'Ejemplo 0.72'})
                         )
 
 class Binomial_Rango(forms.Form):
-    n = forms.IntegerField(label='n: Ingrese número de ensayos',
+    n = forms.IntegerField(min_value=1, label='n: Ingrese número de ensayos',
                         widget=forms.NumberInput(
                             attrs={'class': 'form-control',
                             'placeholder': 'Ejemplo 4'})
                         )
-    p = forms.FloatField(label='p: Probabilidad de éxito.',
+    p = forms.FloatField(min_value=0, label='p: Probabilidad de éxito.',
                         widget=forms.NumberInput(
                             attrs={'class': 'form-control',
                             'placeholder': 'Ejemplo 0.9'})
                         )
-    inicio = forms.IntegerField(label='Ingrese el número inicial del rango',
+    inicio = forms.IntegerField(min_value=0, label='Ingrese el número inicial del rango',
                                 widget=forms.NumberInput(
                                     attrs={'class': 'form-control',
                                     'placeholder': 'Ejemplo 1'})
                             )
-    fin = forms.IntegerField(label='Ingrese el número final del rango',
+    fin = forms.IntegerField(min_value=1, label='Ingrese el número final del rango',
                         widget=forms.NumberInput(
                             attrs={'class': 'form-control',
                             'placeholder': 'Ejemplo 3'})
                         )
 
 class Poisson(forms.Form):
-    k = forms.IntegerField(label='k: Ingrese número de fracasos',
+    k = forms.IntegerField(min_value=1, label='k: Ingrese número de fracasos',
                                 widget=forms.NumberInput(
                                     attrs={'class': 'form-control',
                                     'placeholder': 'Ejemplo 4'})
@@ -118,13 +125,13 @@ class Poisson(forms.Form):
     #                         'placeholder': 'Ejemplo 3'})
     #                     )
 
-    n = forms.IntegerField(label='Ingrese el número de ensayos',
+    n = forms.IntegerField(min_value=1, label='Ingrese el número de ensayos',
                         widget=forms.NumberInput(
                             attrs={'class': 'form-control',
                             'placeholder': 'Ejemplo 100'})
                         )
 
-    p = forms.FloatField(label='Ingrese la probabilidad',
+    p = forms.FloatField(min_value=0, label='Ingrese la probabilidad',
                         widget=forms.NumberInput(
                             attrs={'class': 'form-control',
                             'placeholder': 'Ejemplo 0.03'})
@@ -138,24 +145,24 @@ class Poisson_Rango(forms.Form):
     #                         'placeholder': 'Ejemplo 3'})
     #                     )
 
-    n = forms.IntegerField(label='Ingrese el número de ensayos',
+    n = forms.IntegerField(min_value=1, label='Ingrese el número de ensayos',
                         widget=forms.NumberInput(
                             attrs={'class': 'form-control',
                             'placeholder': 'Ejemplo 100'})
                         )
 
-    p = forms.FloatField(label='Ingrese la probabilidad',
+    p = forms.FloatField(min_value=0, label='Ingrese la probabilidad',
                         widget=forms.NumberInput(
                             attrs={'class': 'form-control',
                             'placeholder': 'Ejemplo 0.03'})
                         )
 
-    inicio = forms.IntegerField(label='Ingrese el número inicial del rango',
+    inicio = forms.IntegerField(min_value=0, label='Ingrese el número inicial del rango',
                                 widget=forms.NumberInput(
                                     attrs={'class': 'form-control',
                                     'placeholder': 'Ejemplo 1'})
                             )
-    fin = forms.IntegerField(label='Ingrese el número final del rango',
+    fin = forms.IntegerField(min_value=1, label='Ingrese el número final del rango',
                         widget=forms.NumberInput(
                             attrs={'class': 'form-control',
                             'placeholder': 'Ejemplo 3'})
