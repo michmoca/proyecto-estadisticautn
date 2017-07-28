@@ -26,7 +26,7 @@ class Contacto(forms.Form):
                                 )
 
 class Descriptiva_Info(forms.Form):
-    lista_num = forms.CharField(validators=[my_validator],
+    lista_num = forms.CharField(
                                 label='Ingrese la lista de números separados por comas',
                                 widget=forms.Textarea(
                                     attrs={'class': 'form-control',
