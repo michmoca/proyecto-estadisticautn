@@ -9,6 +9,9 @@
     <!-- Optional theme -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'accounts/style.css' %}">
+
     {% block head %}
     <title>Proyecto Estadística UTN</title>
     {% endblock %}
@@ -20,8 +23,8 @@
 
       <div class="container">
         <!-- Static navbar -->
-        <nav class="navbar navbar-inverse">
-          <div class="container-fluid">
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+          <div class="container ">
             <div class="navbar-header">
               <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
                 <span class="sr-only">Toggle navigation</span>
@@ -54,21 +57,23 @@
       {% block body %}
       <h1>Base</h1>
       {% endblock %}
-    </div>
 
-    <div class="navbar navbar-inverse navbar-fixed-bottom">
-      <div class="container">
-        <p class="navbar-text pull-left">© 2017 - Proyecto Michael Montes.
-             <a href="https://twitter.com/michmoca" target="_blank" >@michmoca</a>
-        </p>
 
-        <a href="https://github.com/michmoca" class="navbar-btn btn-info btn pull-right">
-        <span class="glyphicon glyphicon-star"></span>Ver en github.com</a>
+    </div><!-- /container fluid -->
+
+
+    <div class="container-fluid">
+      <div class="navbar navbar-inverse navbar-fixed-bottom">
+        <div class="container">
+          <p class="navbar-text pull-left">© 2017 - Proyecto Michael Montes.
+               <a href="https://twitter.com/michmoca" target="_blank" >@michmoca</a>
+          </p>
+
+          <a href="https://github.com/michmoca" class="navbar-btn btn-info btn pull-right">
+          <span class="glyphicon glyphicon-star"></span>Ver en github.com</a>
+        </div>
       </div>
     </div>
-
-
-
 
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
