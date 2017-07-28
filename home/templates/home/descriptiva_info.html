@@ -13,16 +13,22 @@
       <form  method="post">
         {% csrf_token %}
         {{form.as_p}}
-        <button class="btn btn-primary"type="submit" >Calcular</button>
+        <button class="btn btn-primary"type="submit" >
+          <span class="glyphicon glyphicon-signal" aria-hidden="true"></span>  Calcular
+        </button>
       </form>
-      {% if resultado %}
-      <p >Mediana: <span class="text-primary">{{ resultado.mediana }}</span> <br>
-      Media: <span class="text-primary">{{ resultado.media }}</span> <br>
-      Moda: <span class="text-primary">{{ resultado.moda }}</span> <br>
-      Varianza: <span class="text-primary">{{ resultado.varianza }}</span> <br>
-      Desviación Estandar: <span class="text-primary">{{ resultado.std }}</span> </p>
-      <span class="bg-primary"></span>
-      {% endif %}
+
+      <div class="alert alert-success" role="alert">
+          {% if resultado %}
+          <p >Mediana: <span class="text-primary">{{ resultado.mediana }}</span> <br>
+          Media: <span class="text-primary">{{ resultado.media }}</span> <br>
+          Moda: <span class="text-primary">{{ resultado.moda }}</span> <br>
+          Varianza: <span class="text-primary">{{ resultado.varianza }}</span> <br>
+          Desviación Estandar: <span class="text-primary">{{ resultado.std }}</span> </p>
+          <span class="bg-primary"></span>
+          {% endif %}
+      </div><!-- fin alert -->
+
     </div>
 
     <div class="col-md-6">

@@ -31,22 +31,22 @@ class Descriptiva_Info(forms.Form):
                             )
 
 class TStudent(forms.Form):
-    n = forms.IntegerField(label='N',
+    n = forms.IntegerField(label='N: Grados de libertad',
                             #help_text='Grados de libertad',
                                 widget=forms.NumberInput(
                                     attrs={'class': 'form-control',
-                                    'placeholder': 'Grados de Libertad'}),
+                                    'placeholder': 'Ejemplo: 20'}),
                             )
     t_score1 = forms.FloatField(label='T-Score 1',
                                     widget=forms.NumberInput(
                                         attrs={'class': 'form-control',
-                                        'placeholder': 'T-Score 1'}),
+                                        'placeholder': 'Ejemplo: 2.861'}),
                                 )
     t_score2 = forms.FloatField(label='T-Score 2', required=False,
-                                help_text='Campo Opcional',
+                                help_text='Ver video minuto 2 para ejemplo.',
                                 widget=forms.NumberInput(
                                     attrs={'class': 'form-control',
-                                    'placeholder': 'T-Score 2'}),
+                                    'placeholder': 'Opcional  '}),
                                 )
 
 

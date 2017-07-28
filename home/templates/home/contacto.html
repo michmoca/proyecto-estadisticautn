@@ -12,7 +12,9 @@
         <form  method="post">
           {% csrf_token %}
           {{form.as_p}}
-          <button class="btn btn-primary"type="submit" >Enviar</button>
+          <button class="btn btn-primary"type="submit" >
+            <span class="glyphicon glyphicon-send" aria-hidden="true"></span> Enviar
+          </button>
         </form>
         {% if text %}
         <h2><span class="label label-success">{{ text}}</span></h2>

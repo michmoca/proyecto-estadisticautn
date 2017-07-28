@@ -103,9 +103,9 @@ def t_student(N, t_score1, t_score2=None ):
         caso3 = 0.5
 
         dict_resultados = {
-                        'caso1' :"P(T<={}) = {})".format(t_score1, caso1),
-                        'caso2' :"P(T >= {}) = {})".format(t_score1, caso2),
-                        'caso3' :"P(T = 0) = {})".format(caso3),
+                        'caso1' :"P(T<={}) = {}".format(t_score1, caso1),
+                        'caso2' :"P(T >= {}) = {}".format(t_score1, caso2),
+                        'caso3' :"P(T = 0) = {}".format(caso3),
                      }
 
     return dict_resultados

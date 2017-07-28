@@ -11,21 +11,23 @@
         <form  method="post">
           {% csrf_token %}
           {{form.as_p}}
-          <button class="btn btn-primary"type="submit" >Calcular</button>
+          <button class="btn btn-primary"type="submit" >
+            <span class="glyphicon glyphicon-signal" aria-hidden="true"></span> Calcular
+          </button>
         </form>
         {% if resultado.caso1 %}
-        <h2>Caso 1: {{ resultado.caso1 }}</h2>
+        <h3><span class="label label-default">Caso 1: {{ resultado.caso1 }}</span></h3>
         {% endif %}
         {% if resultado.caso2 %}
-          <h2>Caso 2: {{ resultado.caso2 }}</h2>
-          <h2>Caso 3: {{ resultado.caso3 }}</h2>
+          <h3><span class="label label-primary">Caso 2: {{ resultado.caso2 }}</span></h3>
+          <h3><span class="label label-success">Caso 3: {{ resultado.caso3 }}</span></h3>
         {% endif %}
       </div>
 
       <div class="col-md-8">
         <!-- 4:3 aspect ratio -->
         <div class="embed-responsive embed-responsive-16by9">
-          <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/5ABpqVSx33I?ecver=2"></iframe>
+          <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/HPCLWWjZYXQ?ecver=2"></iframe>
         </div>
       </div>
 

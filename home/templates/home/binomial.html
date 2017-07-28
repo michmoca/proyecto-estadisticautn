@@ -13,10 +13,12 @@
       <form  method="post">
         {% csrf_token %}
         {{form.as_p}}
-        <button class="btn btn-primary"type="submit" >Calcular</button>
+        <button class="btn btn-primary"type="submit" >
+          <span class="glyphicon glyphicon-signal" aria-hidden="true"></span>  Calcular
+        </button>
       </form>
       {% if resultado %}
-      <h2 >El porcentaje es de: <span class="text-primary">{{ resultado }}%</span> </h2>
+      <h3>El porcentaje es de: <span class="text-primary">{{ resultado }}%</span> </h3>
       <span class="bg-primary"></span>
       {% endif %}
     </div>
