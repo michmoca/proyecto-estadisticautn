@@ -13,6 +13,11 @@ from rest_framework.response import Response
 
 #User = get_user_model()
 
+class CalculadoraView(TemplateView):
+    template_name = 'home/calculadora.html'
+    def get(self, request):
+        return render(request, self.template_name, )
+
 class CharData(APIView):
     authentication_classes = []
     permission_classes = []
