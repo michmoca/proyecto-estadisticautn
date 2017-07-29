@@ -2,12 +2,15 @@
 import django
 import matplotlib
 matplotlib.use('Agg')
+import seaborn as sns
 import matplotlib.pyplot as plt
 from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas
 from matplotlib.figure import Figure
 import numpy as np
 from home.views import Descriptiva_InfoView
 
+sns.set(color_codes=True)
+sns.set_style("whitegrid")
 
 def histograma(request):
     lista_p = Descriptiva_InfoView.lista_num
