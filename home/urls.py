@@ -3,7 +3,8 @@ from home import views
 from home import charts
 
 urlpatterns = [
-    url(r'^calculadora/$', views.CalculadoraView.as_view(), name='calculadora'),
+    url(r'^calculadora1/$', views.Calculadora1View.as_view(), name='calculadora1'),
+    url(r'^calculadora2/$', views.Calculadora2View.as_view(), name='calculadora2'),
     url(r'^charts/boxplot.jpg$', charts.boxplot),
     url(r'^charts/histograma.png$', charts.histograma),
     url(r'^$', views.HomeView.as_view(), name='home'),

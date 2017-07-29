@@ -13,8 +13,13 @@ from rest_framework.response import Response
 
 #User = get_user_model()
 
-class CalculadoraView(TemplateView):
-    template_name = 'home/calculadora.html'
+class Calculadora1View(TemplateView):
+    template_name = 'home/calculadora1.html'
+    def get(self, request):
+        return render(request, self.template_name, )
+
+class Calculadora2View(TemplateView):
+    template_name = 'home/calculadora2.html'
     def get(self, request):
         return render(request, self.template_name, )
 
