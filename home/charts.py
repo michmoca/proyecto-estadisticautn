@@ -1,7 +1,7 @@
 # file charts.py
 import django
-import matplotlib
-matplotlib.use('Agg')
+# import matplotlib
+# matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas
 from matplotlib.figure import Figure
@@ -9,9 +9,37 @@ import numpy as np
 from home.views import Descriptiva_InfoView
 
 
-
-
 def histograma(request):
+    lista_p = Descriptiva_InfoView.lista_num
+    #print(Descriptiva_InfoView.lista_num)
+    lista= lista_p.split(',')
+    lista_np = np.array(lista)
+    lista_np = lista_np.astype(float)
+    fig = plt.figure()
+
+
+    ax=fig.add_subplot(121)
+    ax.hist(lista_np)
+
+    ax.set_xlabel('Números ingresados')
+    ax.set_ylabel('Cantidad de apariciones')
+    ax.set_title('Histograma')
+
+    ax2=fig.add_subplot(122)
+    ax2.boxplot(lista_np)
+
+    # ax2.set_xlabel('Números ingresados')
+    # ax2.set_ylabel('Cantidad de apariciones')
+    ax2.set_title('Diagrama de caja')
+
+    #plt.subplots_adjust(bottom=0.25, top=0.75)
+    #plt.subplots_adjust(bottom=0.15, wspace=0.05)
+    canvas=FigureCanvas(fig)
+    response=django.http.HttpResponse(content_type='image/png')
+    canvas.print_png(response)
+    return response
+
+def histograma_respaldo(request):
     lista_p = Descriptiva_InfoView.lista_num
     #print(Descriptiva_InfoView.lista_num)
     lista= lista_p.split(',')
