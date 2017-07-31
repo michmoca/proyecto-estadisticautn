@@ -69,8 +69,19 @@ def intervalo_confianza_proporcion(p, confianza, n):
     intervalo1 = p - z * math.sqrt(p *(1-p) /n) #izquierda - resta
     intervalo2 = p + z * math.sqrt(p *(1-p) /n) #derecha + suma
     #se redondean los numeros a 2 decimales
-    intervalo1 = round(intervalo1, 2)
-    intervalo2 = round(intervalo2, 2)
+    intervalo1 = format(intervalo1, '.2f')
+    intervalo2 = format(intervalo2, '.2f')
+    #se da formato al string antes y se retorna
+    return ("[{} - {}]".format(intervalo1, intervalo2))
+
+def intervalo_confianza_media(n, std, x, confianza):
+    z = calcular_z(confianza)
+
+    intervalo1 = x - z * (std / math.sqrt(n)) #izquierda - resta
+    intervalo2 = x + z * (std / math.sqrt(n)) #derecha + suma
+
+    intervalo1 = format(intervalo1, '.2f')
+    intervalo2 = format(intervalo2, '.2f')
     #se da formato al string antes y se retorna
     return ("[{} - {}]".format(intervalo1, intervalo2))
 

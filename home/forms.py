@@ -72,6 +72,30 @@ class Estimacion(forms.Form):
                             'placeholder': 'Ingrese % confianza, ejemplo 95'})
                         )
 
+class Estimacion_Media(forms.Form):
+    n = forms.IntegerField(min_value=1, label='N',
+                                widget=forms.NumberInput(
+                                    attrs={'class': 'form-control',
+                                    'placeholder': 'Ingrese numero, ejemplo 300'})
+                            )
+    std = forms.FloatField(min_value=0, label='σ',
+                        widget=forms.NumberInput(
+                            attrs={'class': 'form-control',
+                            'placeholder': 'Ingrese Desviación Estandar'})
+                        )
+
+    x = forms.FloatField(min_value=0, label='X',
+                        widget=forms.NumberInput(
+                            attrs={'class': 'form-control',
+                            'placeholder': 'Ingrese el promedio'})
+                        )
+
+    confianza = forms.FloatField(min_value=0, max_value=100, label='Confianza',
+                        widget=forms.NumberInput(
+                            attrs={'class': 'form-control',
+                            'placeholder': 'Ingrese % confianza, ejemplo 95'})
+                        )
+
 class Binomial(forms.Form):
     x = forms.IntegerField(min_value=1, label='x: Ingrese número de éxitos observados',
                                 widget=forms.NumberInput(

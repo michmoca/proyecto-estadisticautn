@@ -238,6 +238,27 @@ class EstimacionView(TemplateView):
         args = {'form': form, 'resultado': resultado}
         return render(request, self.template_name, args)
 
+
+class Estimacion_MediaView(TemplateView):
+    template_name = 'home/estimacion_media.html'
+
+    def get(self, request):
+        form = Form.Estimacion_Media()
+        return render(request, self.template_name, {'form': form})
+
+    def post(self, request):
+        form = Form.Estimacion_Media(request.POST)
+        if form.is_valid():
+            n = form.cleaned_data['n']
+            std = form.cleaned_data['std']
+            x = form.cleaned_data['x']
+            confi = form.cleaned_data['confianza']
+            resultado = calcu.intervalo_confianza_media(n=n, std=std, x=x, confianza=confi)
+            form = Form.Estimacion_Media()
+
+        args = {'form': form, 'resultado': resultado}
+        return render(request, self.template_name, args)
+
 class TStudentView(TemplateView):
     template_name = 'home/tstudent.html'
 
