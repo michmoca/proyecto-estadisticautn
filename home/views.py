@@ -219,21 +219,21 @@ class Binomial_RangoView(TemplateView):
         args = {'form': form, 'resultado': resultado}
         return render(request, self.template_name, args)
 
-class EstimacionView(TemplateView):
-    template_name = 'home/estimacion.html'
+class Estimacion_ProporcionView(TemplateView):
+    template_name = 'home/estimacion_proporcion.html'
 
     def get(self, request):
-        form = Form.Estimacion()
+        form = Form.Estimacion_Proporcion()
         return render(request, self.template_name, {'form': form})
 
     def post(self, request):
-        form = Form.Estimacion(request.POST)
+        form = Form.Estimacion_Proporcion(request.POST)
         if form.is_valid():
             num = form.cleaned_data['n']
             probab = form.cleaned_data['p']
             confi = form.cleaned_data['confianza']
             resultado = calcu.intervalo_confianza_proporcion(n=num, p=probab, confianza=confi)
-            form = Form.Estimacion()
+            form = Form.Estimacion_Proporcion()
 
         args = {'form': form, 'resultado': resultado}
         return render(request, self.template_name, args)
