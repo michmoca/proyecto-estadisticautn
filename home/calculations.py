@@ -15,12 +15,14 @@ def descriptiva_info(lista):
     moda = mode(lista_np)
     varianza = np.var(lista_np)
     desv = np.std(lista_np)
+    tamano = len(lista_np)
     dict_resultados = {
                     'mediana': mediana,
                     'media': media,
                     'moda': moda.mode[0],
                     'varianza': varianza,
                     'std': desv,
+                    'tamano':tamano,
                  }
     return dict_resultados
 

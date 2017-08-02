@@ -2,6 +2,7 @@ from django import forms
 from django.core import validators
 
 
+
 class HomeForm(forms.Form):
     pass
 
@@ -32,8 +33,6 @@ class Descriptiva_Info(forms.Form):
 
                             )
 
-
-
 class TStudent(forms.Form):
     n = forms.IntegerField(min_value=1, max_value=30,
                                 label='N: Grados de libertad',
@@ -54,7 +53,6 @@ class TStudent(forms.Form):
                                     'placeholder': 'Opcional  '}),
                                 )
 
-
 class Estimacion_Proporcion(forms.Form):
     n = forms.IntegerField(min_value=1, label='N',
                                 widget=forms.NumberInput(
@@ -73,6 +71,13 @@ class Estimacion_Proporcion(forms.Form):
                         )
 
 class Estimacion_Media(forms.Form):
+
+    x = forms.FloatField(min_value=0, label='X',
+                            widget=forms.NumberInput(
+                                attrs={'class': 'form-control',
+                                'placeholder': 'Ingrese la media (promedio)'})
+                            )
+
     n = forms.IntegerField(min_value=1, label='N',
                                 widget=forms.NumberInput(
                                     attrs={'class': 'form-control',
@@ -84,11 +89,7 @@ class Estimacion_Media(forms.Form):
                             'placeholder': 'Ingrese Desviación Estandar'})
                         )
 
-    x = forms.FloatField(min_value=0, label='X',
-                        widget=forms.NumberInput(
-                            attrs={'class': 'form-control',
-                            'placeholder': 'Ingrese la media (promedio)'})
-                        )
+
 
     confianza = forms.FloatField(min_value=0, max_value=100, label='Confianza',
                         widget=forms.NumberInput(

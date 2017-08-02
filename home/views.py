@@ -1,6 +1,7 @@
 from django.views.generic import TemplateView
 from django.shortcuts import render
 from home import forms as Form
+from django import forms
 from home import calculations as calcu
 from django.core.mail import send_mail, BadHeaderError
 #from django.http import HttpResponse, HttpResponseRedirect
@@ -113,9 +114,11 @@ def get_data(request, *args, **kwargs):
 
 
 class Descriptiva_InfoView(TemplateView):
-    template_name = 'home/descriptiva_info.html'
     def __init__(self):
         self.lista_num = "0"
+
+    template_name = 'home/descriptiva_info.html'
+
 
     def get(self, request):
         form = Form.Descriptiva_Info()
@@ -240,24 +243,91 @@ class Estimacion_ProporcionView(TemplateView):
 
 
 class Estimacion_MediaView(TemplateView):
+    def __init__(self):
+        self.media = 0
     template_name = 'home/estimacion_media.html'
 
     def get(self, request):
         form = Form.Estimacion_Media()
-        return render(request, self.template_name, {'form': form})
+        form_modal = Form.Descriptiva_Info()
+        args = {'form': form, 'form_modal': form_modal}
+        return render(request, self.template_name, args)
 
     def post(self, request):
         form = Form.Estimacion_Media(request.POST)
+        form_modal = Form.Descriptiva_Info(request.POST)
+        resultado = None
+        lista_num = '0'
+
         if form.is_valid():
             n = form.cleaned_data['n']
             std = form.cleaned_data['std']
             x = form.cleaned_data['x']
             confi = form.cleaned_data['confianza']
             resultado = calcu.intervalo_confianza_media(n=n, std=std, x=x, confianza=confi)
-            form = Form.Estimacion_Media()
 
-        args = {'form': form, 'resultado': resultado}
-        return render(request, self.template_name, args)
+            form = Form.Estimacion_Media()
+            form_modal = Form.Descriptiva_Info()
+
+            args = {'form': form, 'form_modal': form_modal, 'resultado': resultado, }
+            return render(request, self.template_name, args)
+
+
+        #para el post del MODAL
+        if form_modal.is_valid():
+            #proceso para obtener los resultados de la lista
+            lista_num = form_modal.cleaned_data['lista_num']
+            Descriptiva_InfoView.lista_num = lista_num
+            resultado_descriptiva = calcu.descriptiva_info(lista=lista_num)
+            #guardamos los valores en variables
+            media = resultado_descriptiva['media']
+            desviacion_estandar = resultado_descriptiva['std']
+            tamano = resultado_descriptiva['tamano']
+            #limpiamos el modal
+            form_modal = Form.Descriptiva_Info()
+
+            #creamos el formulario con los valores obtenidos de la lista
+            class Estimacion_Media(forms.Form):
+
+                    n = forms.IntegerField(min_value=1, label='N',initial=tamano,
+                                                widget=forms.NumberInput(
+                                                    attrs={'class': 'form-control',
+                                                    'placeholder': 'Ingrese tamaño de muestra, ejemplo 30'})
+                                            )
+                    std = forms.FloatField(min_value=0, label='σ',initial=desviacion_estandar,
+                                        widget=forms.NumberInput(
+                                            attrs={'class': 'form-control',
+                                            'placeholder': 'Ingrese Desviación Estandar'})
+                                        )
+                    x = forms.FloatField(min_value=0, label='X', initial=media,
+                                        widget=forms.NumberInput(
+                                            attrs={'class': 'form-control',
+                                            'placeholder': 'Ingrese la media (promedio)'})
+                                        )
+
+                    confianza = forms.FloatField(min_value=0, max_value=100, label='Confianza',
+                                        widget=forms.NumberInput(
+                                            attrs={'class': 'form-control',
+                                            'placeholder': 'Ingrese % confianza, ejemplo 95'})
+                                        )
+
+            #llamamos el form con los valores ya establecidos
+            form = Estimacion_Media()
+            args = {'form': form, 'form_modal': form_modal}
+            return render(request, self.template_name, args)
+
+        else:
+            #no limpiamos el modal para que revise el error
+            #form_modal = Form.Descriptiva_Info()
+            form = Form.Estimacion_Media()
+            error = True
+            args = {'form': form, 'form_modal': form_modal, 'error':error}
+            return render(request, self.template_name, args)
+
+
+
+        #args = {'form': form, 'form_modal': form_modal, 'resultado': resultado,}
+        #return render(request, self.template_name, args)
 
 class TStudentView(TemplateView):
     template_name = 'home/tstudent.html'
