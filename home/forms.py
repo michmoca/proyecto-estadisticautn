@@ -72,17 +72,18 @@ class Estimacion_Proporcion(forms.Form):
 
 class Estimacion_Media(forms.Form):
 
+    n = forms.IntegerField(min_value=1, label='N',
+                                widget=forms.NumberInput(
+                                    attrs={'class': 'form-control',
+                                    'placeholder': 'Ingrese tamaño de muestra, ejemplo 30'})
+                            )
+
     x = forms.FloatField(min_value=0, label='X',
                             widget=forms.NumberInput(
                                 attrs={'class': 'form-control',
                                 'placeholder': 'Ingrese la media (promedio)'})
                             )
 
-    n = forms.IntegerField(min_value=1, label='N',
-                                widget=forms.NumberInput(
-                                    attrs={'class': 'form-control',
-                                    'placeholder': 'Ingrese tamaño de muestra, ejemplo 30'})
-                            )
     std = forms.FloatField(min_value=0, label='σ',
                         widget=forms.NumberInput(
                             attrs={'class': 'form-control',

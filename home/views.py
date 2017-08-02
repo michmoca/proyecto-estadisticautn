@@ -294,15 +294,17 @@ class Estimacion_MediaView(TemplateView):
                                                     attrs={'class': 'form-control',
                                                     'placeholder': 'Ingrese tamaño de muestra, ejemplo 30'})
                                             )
-                    std = forms.FloatField(min_value=0, label='σ',initial=desviacion_estandar,
-                                        widget=forms.NumberInput(
-                                            attrs={'class': 'form-control',
-                                            'placeholder': 'Ingrese Desviación Estandar'})
-                                        )
+
                     x = forms.FloatField(min_value=0, label='X', initial=media,
                                         widget=forms.NumberInput(
                                             attrs={'class': 'form-control',
                                             'placeholder': 'Ingrese la media (promedio)'})
+                                        )
+                                        
+                    std = forms.FloatField(min_value=0, label='σ',initial=desviacion_estandar,
+                                        widget=forms.NumberInput(
+                                            attrs={'class': 'form-control',
+                                            'placeholder': 'Ingrese Desviación Estandar'})
                                         )
 
                     confianza = forms.FloatField(min_value=0, max_value=100, label='Confianza',
