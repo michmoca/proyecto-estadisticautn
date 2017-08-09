@@ -14,6 +14,29 @@ from rest_framework.response import Response
 
 #User = get_user_model()
 
+class Hipotesis_ProporcionView(TemplateView):
+    template_name = 'home/hipotesis_proporcion.html'
+
+    def get(self, request):
+        form = Form.Hipotesis_Proporcion()
+        return render(request, self.template_name, {'form': form})
+
+    def post(self, request):
+        form = Form.Hipotesis_Proporcion(request.POST)
+        if form.is_valid():
+            n = form.cleaned_data['n']
+            P = form.cleaned_data['P']
+            p = form.cleaned_data['p']
+            alfa = form.cleaned_data['alfa']
+            resultado_z = calcu.calcular_z_alfa(alfa)
+            resultado_zr = calcu.calcular_prueba_hipotesis_proporcion(P,p,n)
+            resultado = {'z': resultado_z, 'zr': resultado_zr}
+            form = Form.Hipotesis_Proporcion()
+
+        args = {'form': form, 'resultado': resultado}
+        return render(request, self.template_name, args)
+
+
 class Calculadora1View(TemplateView):
     template_name = 'home/calculadora1.html'
     def get(self, request):
@@ -300,7 +323,7 @@ class Estimacion_MediaView(TemplateView):
                                             attrs={'class': 'form-control',
                                             'placeholder': 'Ingrese la media (promedio)'})
                                         )
-                                        
+
                     std = forms.FloatField(min_value=0, label='σ',initial=desviacion_estandar,
                                         widget=forms.NumberInput(
                                             attrs={'class': 'form-control',

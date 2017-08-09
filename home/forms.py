@@ -6,6 +6,29 @@ from django.core import validators
 class HomeForm(forms.Form):
     pass
 
+class Hipotesis_Proporcion(forms.Form):
+    alfa = forms.FloatField(min_value=0, max_value=1, label='σ',
+                        widget=forms.NumberInput(
+                            attrs={'class': 'form-control',
+                            'placeholder': 'Ingrese nivel significancia, ejemplo 0.10'})
+                        )
+    n = forms.IntegerField(min_value=1, label='N',
+                                    widget=forms.NumberInput(
+                                    attrs={'class': 'form-control',
+                                    'placeholder': 'Ingrese numero, ejemplo 15'})
+                            )
+    P = forms.FloatField(min_value=0, max_value=1, label='P',
+                        widget=forms.NumberInput(
+                            attrs={'class': 'form-control',
+                            'placeholder': 'Ingrese P Grande, ejemplo 0.70'})
+                        )
+    p = forms.FloatField(min_value=0, max_value=1, label='p',
+                        widget=forms.NumberInput(
+                            attrs={'class': 'form-control',
+                            'placeholder': 'Ingrese p pequeña, ejemplo 0.5333'})
+                        )
+
+
 class Contacto(forms.Form):
     subject = forms.CharField(label='Asunto',
                             #help_text='Grados de libertad',

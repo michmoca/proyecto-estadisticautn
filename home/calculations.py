@@ -6,6 +6,26 @@ from scipy.stats import mode
 import math
 import numpy as np
 
+#P es el porcentaje mayor
+#p es el porcentaje menor
+def calcular_prueba_hipotesis_proporcion(P, p, n):
+    q = 1 - P
+    resultado = (p-P) / math.sqrt(((P*q)/n))
+    resultado = format(resultado, '.3f')
+    return resultado
+
+def calcular_prueba_hipotesis_media(promedio, media, std, n):
+    resultado = (promedio - media) / (std / math.sqrt(n))
+    return resultado
+
+def calcular_z_alfa(alfa):
+    '''esta funcion calcula y retorna el valor de Z recibiendo alfa de parametro'''
+    valor_tabla = 1 - (alfa / 2)
+    z = ndtri(valor_tabla)
+    z = format(z, '.3f')
+    return z
+
+
 def descriptiva_info(lista):
     lista= lista.split(',')
     lista_np = np.array(lista)
