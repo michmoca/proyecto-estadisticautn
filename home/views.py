@@ -14,6 +14,33 @@ from rest_framework.response import Response
 
 #User = get_user_model()
 
+class Hipotesis_Diferencia_MediasView(TemplateView):
+    template_name = 'home/hipotesis_diferencia_medias.html'
+
+    def get(self, request):
+        form = Form.Hipotesis_Diferencia_Medias()
+        return render(request, self.template_name, {'form': form})
+
+    def post(self, request):
+        form = Form.Hipotesis_Diferencia_Medias(request.POST)
+        if form.is_valid():
+            media1 = 0
+            media2 = 0
+            std1 = form.cleaned_data['std1']
+            std2 = form.cleaned_data['std2']
+            promedio1 = form.cleaned_data['promedio1']
+            promedio2 = form.cleaned_data['promedio2']
+            n1 = form.cleaned_data['n1']
+            n2 = form.cleaned_data['n2']
+            alfa = form.cleaned_data['alfa']
+            resultado_z = calcu.calcular_z_alfa(alfa)
+            resultado_zr = calcu.calcular_prueba_hipotesis_diferencia_medias(promedio1, promedio2, media1, media2, std1, std2, n1, n2)
+            resultado = {'z': resultado_z, 'zr': resultado_zr}
+            form = Form.Hipotesis_Diferencia_Medias()
+
+        args = {'form': form, 'resultado': resultado}
+        return render(request, self.template_name, args)
+
 class Hipotesis_MediaView(TemplateView):
     template_name = 'home/hipotesis_media.html'
 

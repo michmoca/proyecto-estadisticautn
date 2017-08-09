@@ -11,6 +11,7 @@ urlpatterns = [
     url(r'^api/data/$', views.get_data, name='api-data'),
     url(r'^api/chart/data/$', views.CharData.as_view()),
     url(r'^tstudent/$', views.TStudentView.as_view(), name='tstudent'),
+    url(r'^hipotesis-diferencia-medias/$', views.Hipotesis_Diferencia_MediasView.as_view(), name='hipotesis_diferencia_medias'),
     url(r'^hipotesis-media/$', views.Hipotesis_MediaView.as_view(), name='hipotesis_media'),
     url(r'^hipotesis-proporcion/$', views.Hipotesis_ProporcionView.as_view(), name='hipotesis_proporcion'),
     url(r'^estimacion-proporcion/$', views.Estimacion_ProporcionView.as_view(), name='estimacion'),

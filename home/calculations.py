@@ -6,6 +6,11 @@ from scipy.stats import mode
 import math
 import numpy as np
 
+def calcular_prueba_hipotesis_diferencia_medias(promedio1, promedio2, media1, media2, std1, std2, n1, n2):
+    resultado = ((promedio1 - promedio2) - (media1 - media2)) / math.sqrt( (math.pow(std1,2)/n1) + (math.pow(std2,2)/n2))
+    resultado = format(resultado, '.3f')
+    return resultado
+
 #P es el porcentaje mayor
 #p es el porcentaje menor
 def calcular_prueba_hipotesis_proporcion(P, p, n):

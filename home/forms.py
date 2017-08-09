@@ -6,6 +6,53 @@ from django.core import validators
 class HomeForm(forms.Form):
     pass
 
+class Hipotesis_Diferencia_Medias(forms.Form):
+
+    std1 = forms.FloatField(min_value=0, label='σ #1',
+                        widget=forms.NumberInput(
+                            attrs={'class': 'form-control',
+                            'placeholder': 'Ingrese Desviación Estandar #1, ejemplo 8'})
+                        )
+
+    std2 = forms.FloatField(min_value=0, label='σ #2',
+                        widget=forms.NumberInput(
+                            attrs={'class': 'form-control',
+                            'placeholder': 'Ingrese Desviación Estandar #2, ejemplo 8'})
+                        )
+
+    promedio1 = forms.FloatField(min_value=0, label=' x¯ #1',
+                        widget=forms.NumberInput(
+                            attrs={'class': 'form-control',
+                            'placeholder': 'Ingrese el promedio de la muestra #1, ejemplo 121'})
+                        )
+
+    promedio2 = forms.FloatField(min_value=0, label=' x¯ #2',
+                        widget=forms.NumberInput(
+                            attrs={'class': 'form-control',
+                            'placeholder': 'Ingrese el promedio de la muestra #2, ejemplo 112'})
+                        )
+
+    n1 = forms.IntegerField(min_value=1, label='n #1',
+                                widget=forms.NumberInput(
+                                attrs={'class': 'form-control',
+                                'placeholder': 'Ingrese tamaño de muestra #1, ejemplo 10'})
+                            )
+
+    n2 = forms.IntegerField(min_value=1, label='n #2',
+                                widget=forms.NumberInput(
+                                attrs={'class': 'form-control',
+                                'placeholder': 'Ingrese tamaño de muestra #2, ejemplo 10'})
+                            )
+
+
+
+    alfa = forms.FloatField(min_value=0, max_value=1, label='α',
+                        widget=forms.NumberInput(
+                            attrs={'class': 'form-control',
+                            'placeholder': 'Ingrese nivel significancia, ejemplo 0.05'})
+                        )
+
+
 class Hipotesis_Media(forms.Form):
     media = forms.FloatField(min_value=0, label='µ',
                         widget=forms.NumberInput(
@@ -22,13 +69,13 @@ class Hipotesis_Media(forms.Form):
     promedio = forms.FloatField(min_value=0, label=' x¯',
                         widget=forms.NumberInput(
                             attrs={'class': 'form-control',
-                            'placeholder': 'Ingrese la media de la población, ejemplo 788'})
+                            'placeholder': 'Ingrese el promedio de la muestra, ejemplo 788'})
                         )
 
     n = forms.IntegerField(min_value=1, label='N',
                                 widget=forms.NumberInput(
                                 attrs={'class': 'form-control',
-                                'placeholder': 'Ingrese numero, ejemplo 30'})
+                                'placeholder': 'Ingrese número, ejemplo 30'})
                             )
 
     alfa = forms.FloatField(min_value=0, max_value=1, label='α',
@@ -42,7 +89,7 @@ class Hipotesis_Proporcion(forms.Form):
     n = forms.IntegerField(min_value=1, label='N',
                                 widget=forms.NumberInput(
                                 attrs={'class': 'form-control',
-                                'placeholder': 'Ingrese numero, ejemplo 15'})
+                                'placeholder': 'Ingrese número, ejemplo 15'})
                             )
     P = forms.FloatField(min_value=0, max_value=1, label='P',
                             widget=forms.NumberInput(
@@ -112,7 +159,7 @@ class Estimacion_Proporcion(forms.Form):
     n = forms.IntegerField(min_value=1, label='N',
                                 widget=forms.NumberInput(
                                     attrs={'class': 'form-control',
-                                    'placeholder': 'Ingrese numero, ejemplo 300'})
+                                    'placeholder': 'Ingrese número, ejemplo 300'})
                             )
     p = forms.FloatField(min_value=0, max_value=1, label='P',
                         widget=forms.NumberInput(
