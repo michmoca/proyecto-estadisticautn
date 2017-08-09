@@ -14,6 +14,29 @@ from rest_framework.response import Response
 
 #User = get_user_model()
 
+class Hipotesis_MediaView(TemplateView):
+    template_name = 'home/hipotesis_media.html'
+
+    def get(self, request):
+        form = Form.Hipotesis_Media()
+        return render(request, self.template_name, {'form': form})
+
+    def post(self, request):
+        form = Form.Hipotesis_Media(request.POST)
+        if form.is_valid():
+            media = form.cleaned_data['media']
+            std = form.cleaned_data['std']
+            promedio = form.cleaned_data['promedio']
+            n = form.cleaned_data['n']
+            alfa = form.cleaned_data['alfa']
+            resultado_z = calcu.calcular_z_alfa(alfa)
+            resultado_zr = calcu.calcular_prueba_hipotesis_media(promedio, media, std, n)
+            resultado = {'z': resultado_z, 'zr': resultado_zr}
+            form = Form.Hipotesis_Media()
+
+        args = {'form': form, 'resultado': resultado}
+        return render(request, self.template_name, args)
+
 class Hipotesis_ProporcionView(TemplateView):
     template_name = 'home/hipotesis_proporcion.html'
 

@@ -16,6 +16,7 @@ def calcular_prueba_hipotesis_proporcion(P, p, n):
 
 def calcular_prueba_hipotesis_media(promedio, media, std, n):
     resultado = (promedio - media) / (std / math.sqrt(n))
+    resultado = format(resultado, '.3f')
     return resultado
 
 def calcular_z_alfa(alfa):

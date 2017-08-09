@@ -6,26 +6,58 @@ from django.core import validators
 class HomeForm(forms.Form):
     pass
 
-class Hipotesis_Proporcion(forms.Form):
-    alfa = forms.FloatField(min_value=0, max_value=1, label='σ',
+class Hipotesis_Media(forms.Form):
+    media = forms.FloatField(min_value=0, label='µ',
                         widget=forms.NumberInput(
                             attrs={'class': 'form-control',
-                            'placeholder': 'Ingrese nivel significancia, ejemplo 0.10'})
+                            'placeholder': 'Ingrese la media de la población, ejemplo 800'})
                         )
+
+    std = forms.FloatField(min_value=0, label='σ',
+                        widget=forms.NumberInput(
+                            attrs={'class': 'form-control',
+                            'placeholder': 'Ingrese Desviación Estandar, ejemplo 40'})
+                        )
+
+    promedio = forms.FloatField(min_value=0, label=' x¯',
+                        widget=forms.NumberInput(
+                            attrs={'class': 'form-control',
+                            'placeholder': 'Ingrese la media de la población, ejemplo 788'})
+                        )
+
     n = forms.IntegerField(min_value=1, label='N',
-                                    widget=forms.NumberInput(
-                                    attrs={'class': 'form-control',
-                                    'placeholder': 'Ingrese numero, ejemplo 15'})
+                                widget=forms.NumberInput(
+                                attrs={'class': 'form-control',
+                                'placeholder': 'Ingrese numero, ejemplo 30'})
+                            )
+
+    alfa = forms.FloatField(min_value=0, max_value=1, label='α',
+                        widget=forms.NumberInput(
+                            attrs={'class': 'form-control',
+                            'placeholder': 'Ingrese nivel significancia, ejemplo 0.04'})
+                        )
+
+
+class Hipotesis_Proporcion(forms.Form):
+    n = forms.IntegerField(min_value=1, label='N',
+                                widget=forms.NumberInput(
+                                attrs={'class': 'form-control',
+                                'placeholder': 'Ingrese numero, ejemplo 15'})
                             )
     P = forms.FloatField(min_value=0, max_value=1, label='P',
-                        widget=forms.NumberInput(
+                            widget=forms.NumberInput(
                             attrs={'class': 'form-control',
                             'placeholder': 'Ingrese P Grande, ejemplo 0.70'})
                         )
     p = forms.FloatField(min_value=0, max_value=1, label='p',
-                        widget=forms.NumberInput(
+                            widget=forms.NumberInput(
                             attrs={'class': 'form-control',
                             'placeholder': 'Ingrese p pequeña, ejemplo 0.5333'})
+                        )
+    alfa = forms.FloatField(min_value=0, max_value=1, label='α',
+                        widget=forms.NumberInput(
+                            attrs={'class': 'form-control',
+                            'placeholder': 'Ingrese nivel significancia, ejemplo 0.10'})
                         )
 
 
