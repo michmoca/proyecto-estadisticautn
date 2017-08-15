@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '&uasbq0fxrn3e7*i=ee%!i03fzu&hoo)0*^654jaw!#9t)45+z'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 EMAIL_USE_TLS = True
