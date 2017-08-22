@@ -41,6 +41,26 @@ class Hipotesis_Diferencia_MediasView(TemplateView):
         args = {'form': form, 'resultado': resultado}
         return render(request, self.template_name, args)
 
+
+class Chi_CuadradaView(TemplateView):
+    template_name = 'home/chi_cuadrada.html'
+
+    def get(self, request):
+        form = Form.Chi_Cuadrada()
+        return render(request, self.template_name, {'form': form})
+
+    def post(self, request):
+        form = Form.Chi_Cuadrada(request.POST)
+        if form.is_valid():
+            std = form.cleaned_data['std']
+            var = form.cleaned_data['var']
+            n = form.cleaned_data['n']
+            resultado = calcu.calcular_chi_cuadrado_buscar_tabla(n, std, var, valor_tabla = None)
+            form = Form.Chi_Cuadrada()
+
+        args = {'form': form, 'resultado': resultado}
+        return render(request, self.template_name, args)
+
 class Hipotesis_MediaView(TemplateView):
     template_name = 'home/hipotesis_media.html'
 

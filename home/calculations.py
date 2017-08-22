@@ -1,10 +1,17 @@
 from scipy.stats import t
+from scipy.stats import chi2
 from scipy.stats import binom
 from scipy.special import ndtri
 from scipy.stats import poisson as calcular_poisson
 from scipy.stats import mode
 import math
 import numpy as np
+
+def calcular_chi_cuadrado_buscar_tabla(n, std, varianza_muestra, valor_tabla = None):
+    valor_tabla = ((n-1) * varianza_muestra) / math.pow(std,2)
+    resultado = chi2.sf(valor_tabla, (n-1))
+    resultado = format(resultado, '.3f')
+    return resultado
 
 def calcular_prueba_hipotesis_diferencia_medias(promedio1, promedio2, media1, media2, std1, std2, n1, n2):
     resultado = ((promedio1 - promedio2) - (media1 - media2)) / math.sqrt( (math.pow(std1,2)/n1) + (math.pow(std2,2)/n2))

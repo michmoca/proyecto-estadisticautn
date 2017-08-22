@@ -6,6 +6,23 @@ from django.core import validators
 class HomeForm(forms.Form):
     pass
 
+class Chi_Cuadrada(forms.Form):
+    n = forms.IntegerField(min_value=1, label='N',
+                                widget=forms.NumberInput(
+                                attrs={'class': 'form-control',
+                                'placeholder': 'Ingrese número, ejemplo 17'})
+                            )
+    std = forms.FloatField(min_value=0, label='σ',
+                        widget=forms.NumberInput(
+                            attrs={'class': 'form-control',
+                            'placeholder': 'Ingrese Desviación Estandar, ejemplo 1'})
+                        )
+    var = forms.FloatField(min_value=0, label='var',
+                        widget=forms.NumberInput(
+                            attrs={'class': 'form-control',
+                            'placeholder': 'Ingrese Varianza Muestral, ejemplo 2'})
+                        )
+
 class Hipotesis_Diferencia_Medias(forms.Form):
 
     std1 = forms.FloatField(min_value=0, label='σ #1',
