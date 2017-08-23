@@ -121,7 +121,7 @@ class Hipotesis_Proporcion(forms.Form):
     alfa = forms.FloatField(min_value=0, max_value=1, label='α',
                         widget=forms.NumberInput(
                             attrs={'class': 'form-control',
-                            'placeholder': 'Ingrese nivel significancia, ejemplo 0.10'})
+                            'placeholder': 'Ingrese nivel significancia, ejemplo 0.10000'})
                         )
 
 
