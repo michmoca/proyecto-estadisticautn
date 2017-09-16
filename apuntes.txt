@@ -1,2 +1,4 @@
 #QUITAR COMENTARIOS EN ARCHIVOS settings.py   y   wsgi.py
 las lineas indicadas
+
+agregando texto
